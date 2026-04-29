@@ -37,9 +37,14 @@
           "notes": "Official earnings and filings. Requires User-Agent: MoneyMindElite developer@moneymindelite.com"
         },
         {
-          "name": "Bureau of Labor Statistics (BLS)",
-          "endpoint": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
-          "notes": "Employment and CPI data. Registration key required for v2."
+          "name": "Bureau of Labor Statistics (BLS) v1.0",
+          "endpoint": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+          "notes": "No key required for v1.0. Limits apply.",
+          "series_ids": {
+            "inflation_cpi": "CUUR0000SA0",
+            "unemployment_rate": "LNS14000000",
+            "non_farm_payrolls": "CES0000000001"
+          }
         },
         {
           "name": "Morningstar (RapidAPI)",
