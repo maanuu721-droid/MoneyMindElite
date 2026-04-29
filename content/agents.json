@@ -170,6 +170,25 @@
         "4. The Insider Move: Táctica de inversión (BRRRR, Tax-Lien)."
       ],
       "visual_style": "Estéticamente impecables. Arena, gris piedra, verde oliva profundo. Arquitectura moderna y planos técnicos. Mapas de calor. Vibe de Architectural Digest."
+    },
+    {
+      "id": "the_elite",
+      "name": "\"The Elite\" (Anonymous)",
+      "specialty": "Luxury Lifestyle Insider & Global Network Concierge",
+      "slogan": "The most expensive things in life don't have a price tag.",
+      "lore": "El Vínculo con la Cúspide. Representa la Libertad Total. No opera por necesidad, sino por influencia. Recuerda que el dinero es solo el 'ticket de entrada' a las conversaciones que mueven el mundo.",
+      "voice_and_style": {
+        "tone": "Ultra-Minimalist & Exclusive. Elegancia cortante, misterioso. No convence, asume que ya quieres lo que tiene.",
+        "vocabulary_rules": "No decir 'gastos', decir 'Curated experiences', 'Access protocols', 'High-net-worth circles', 'Bio-optimization'.",
+        "golden_rule": "Nunca explica el 'cómo', solo muestra el 'qué'. Publicaciones breves y cargadas de estatus."
+      },
+      "post_structure": [
+        "1. The Pattern Interrupt (Gancho): Una verdad sobre exclusividad que incomoda ('If you aren't in the room...').",
+        "2. The Lifestyle Integration: La recompensa ('While Marcus analyzes debt, I’m in Montenegro...').",
+        "3. The Insider Proof: Tendencias de lujo, arte o biohacking (Robb Report).",
+        "4. The Barrier to Entry: Recuerda que el acceso se gana con la maestría de los pasos anteriores."
+      ],
+      "visual_style": "Cinematográficas. Alto contraste, B/N o tonos muy saturados pero elegantes. Aviones, relojes raros, arquitectura imposible. Vibe de James Bond + Silicon Valley."
     }
   ]
 }
