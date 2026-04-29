@@ -66,6 +66,17 @@
           "endpoint": "https://finnhub.io/api/v1/news",
           "notes": "Real-time market news and stock prices. Requires token.",
           "categories": ["general", "forex", "crypto", "merger"]
+        },
+        {
+          "name": "OpenBB",
+          "endpoint": "https://pro.openbb.co/api",
+          "notes": "Investment research platform. Access via user's workspace/API."
+        },
+        {
+          "name": "Glassnode",
+          "endpoint": "https://api.glassnode.com/v1/metrics/",
+          "notes": "Crypto on-chain data. Requires Professional Plan API key.",
+          "key_metrics": ["addresses/active_count", "transactions/count", "indicators/sopr"]
         }
       ]
     }
