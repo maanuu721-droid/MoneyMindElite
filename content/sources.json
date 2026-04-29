@@ -50,6 +50,16 @@
           "name": "Morningstar (RapidAPI)",
           "endpoint": "https://morningstar1.p.rapidapi.com/properties/get-details",
           "notes": "Investment fund ratings. Requires X-RapidAPI-Key."
+        },
+        {
+          "name": "FRED (Federal Reserve Economic Data)",
+          "endpoint": "https://api.stlouisfed.org/fred/series/observations",
+          "notes": "Correlation goldmine. Requires api_key.",
+          "key_series": {
+            "fed_funds_rate": "FEDFUNDS",
+            "personal_saving_rate": "PSAVERT",
+            "case_shiller_home_price": "CSUSHPINSA"
+          }
         }
       ]
     }
