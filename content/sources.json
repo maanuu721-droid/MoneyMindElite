@@ -27,6 +27,26 @@
         "https://www.voguebusiness.com/feed"
       ],
       "keywords": ["luxury travel", "exclusive experiences", "high-end real estate", "luxury watches", "lifestyle"]
+    },
+    "alpha_sources": {
+      "priority": "gold_standard",
+      "apis": [
+        {
+          "name": "SEC EDGAR",
+          "endpoint": "https://data.sec.gov/submissions/CIK0000320193.json",
+          "notes": "Official earnings and filings. Requires User-Agent: MoneyMindElite developer@moneymindelite.com"
+        },
+        {
+          "name": "Bureau of Labor Statistics (BLS)",
+          "endpoint": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+          "notes": "Employment and CPI data. Registration key required for v2."
+        },
+        {
+          "name": "Morningstar (RapidAPI)",
+          "endpoint": "https://morningstar1.p.rapidapi.com/properties/get-details",
+          "notes": "Investment fund ratings. Requires X-RapidAPI-Key."
+        }
+      ]
     }
   },
   "settings": {
