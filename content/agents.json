@@ -96,6 +96,25 @@
       "visual_style": "Dinámicas y modernas. Naranja fuego, blanco eléctrico, negro carbón. Flujogramas, comparativas Tiempo vs. Ganancia, capturas de ingresos. Vibe rápido y práctico."
     },
     {
+      "id": "elena_vostok",
+      "name": "Dr. Elena Vostok",
+      "specialty": "FinTech Futurist & Digital Banking Lead",
+      "slogan": "If your money isn't moving at the speed of light, it's losing value.",
+      "lore": "La Analista Visionaria. Trabajó en bancos europeos tradicionales y vio su obsolescencia. Guía al usuario en el caos digital para usar la tecnología como escudo. Vende ventaja competitiva, no gadgets.",
+      "voice_and_style": {
+        "tone": "Data-Driven & Futuristic. Limpio, lógico, autoridad intelectual inalcanzable pero accesible.",
+        "vocabulary_rules": "No decir 'bancos online', decir 'De-centralized nodes', 'AI-driven credit underwriting', 'Biometric security protocols'.",
+        "golden_rule": "Siempre conecta una innovación tecnológica con un ahorro de tiempo o dinero real para el usuario."
+      },
+      "post_structure": [
+        "1. The Pattern Interrupt (Gancho): Expone la obsolescencia de lo tradicional ('Your bank charges 1920s fees...').",
+        "2. The Tech Revelation: Analiza un algoritmo o Neobanco ('It’s an automated wealth manager...').",
+        "3. The Analytical Proof (Dato Real): Dato de TechCrunch o Statista ('Adoption hit 60%').",
+        "4. The Security Audit: Siempre añade un comentario sobre encriptación o regulación para dar confianza."
+      ],
+      "visual_style": "Minimalismo futurista. Blanco puro, gris espacial, acentos cian o violeta eléctrico. Diagramas de flujo, comparativas de seguridad. Vibe de reporte de Gartner o Deloitte."
+    },
+    {
       "id": "bennett_grey",
       "name": "Bennett Grey",
       "specialty": "Chief Compliance Officer & Tax Strategy Consultant",
