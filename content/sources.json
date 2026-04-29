@@ -87,6 +87,22 @@
       ]
     }
   },
+  "compliance_and_limits": {
+    "global_rules": {
+      "copyright_enforcement": "STRICT_AI_SYNTHESIS_ONLY",
+      "copyright_prompt": "Read the provided data/news. Synthesize the core facts and write a 100% original, unique article analyzing the implications. NEVER copy-paste sentences from the source.",
+      "attribution_policy": "Must include 'Source: [Name]' or 'According to [Name]...' at the end of articles."
+    },
+    "source_specific_limits": {
+      "rss_feeds": { "max_polls_per_day": 6, "scraping_allowed": false, "notes": "Extract title/description only. Highly copyrighted." },
+      "sec_edgar": { "max_requests_per_second": 1, "notes": "Public domain. Requires User-Agent." },
+      "bls_v1": { "max_requests_per_day": 200, "notes": "Public domain. Keep well below 250 limit." },
+      "fred": { "max_requests_per_minute": 60, "notes": "Public domain. Keep below 120 RPM." },
+      "finnhub": { "max_requests_per_minute": 30, "notes": "Free tier limit. Do not resell raw data." },
+      "morningstar_rapidapi": { "max_requests_per_day": 5, "notes": "Protect monthly quota. Intellectual property." },
+      "newsapi": { "max_requests_per_day": 50, "notes": "Developer plan limit 100/day. Must attribute NewsAPI.org." }
+    }
+  },
   "settings": {
     "update_frequency_hours": 6,
     "min_relevance_score": 75,
