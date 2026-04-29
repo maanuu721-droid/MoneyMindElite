@@ -60,6 +60,12 @@
             "personal_saving_rate": "PSAVERT",
             "case_shiller_home_price": "CSUSHPINSA"
           }
+        },
+        {
+          "name": "Finnhub Stock API",
+          "endpoint": "https://finnhub.io/api/v1/news",
+          "notes": "Real-time market news and stock prices. Requires token.",
+          "categories": ["general", "forex", "crypto", "merger"]
         }
       ]
     }
