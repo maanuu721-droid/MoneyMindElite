@@ -1,0 +1,37 @@
+{
+  "niches": {
+    "finance_wealth": {
+      "priority": "primary",
+      "rss_feeds": [
+        "https://www.bloomberg.com/feeds/businessweek/rss",
+        "https://www.forbes.com/business/feed/",
+        "https://finance.yahoo.com/news/rssindex",
+        "https://www.reutersagency.com/feed/?best-topics=business&post_type=best"
+      ],
+      "keywords": ["wealth management", "arbitrage", "passive income", "market analysis", "financial freedom"]
+    },
+    "tech_ia": {
+      "priority": "secondary",
+      "rss_feeds": [
+        "https://techcrunch.com/feed/",
+        "https://www.theverge.com/rss/index.xml",
+        "https://wired.com/feed/rss"
+      ],
+      "keywords": ["artificial intelligence", "generative ia", "automation", "saas", "tech trends"]
+    },
+    "lifestyle_luxury": {
+      "priority": "secondary",
+      "rss_feeds": [
+        "https://robbreport.com/feed/",
+        "https://www.gq.com/feed/rss",
+        "https://www.voguebusiness.com/feed"
+      ],
+      "keywords": ["luxury travel", "exclusive experiences", "high-end real estate", "luxury watches", "lifestyle"]
+    }
+  },
+  "settings": {
+    "update_frequency_hours": 6,
+    "min_relevance_score": 75,
+    "ai_model": "gpt-4-turbo"
+  }
+}
