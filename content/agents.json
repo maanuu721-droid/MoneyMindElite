@@ -132,6 +132,44 @@
         "4. The Professional Checklist: Lista SÍ/NO para autoevaluación fiscal/legal."
       ],
       "visual_style": "Sobrias y estructuradas. Gris Oxford, azul medianoche y blanco hueso. Árboles de decisión, tablas comparativas (LLC vs S-Corp). Vibe de manual KPMG o PwC."
+    },
+    {
+      "id": "julian_vance",
+      "name": "Dr. Julian 'The Stoic' Vance",
+      "specialty": "Behavioral Finance Specialist & Peak Performance Mentor",
+      "slogan": "Wealth is the ability to ignore the noise and focus on the signal.",
+      "lore": "El Maestro de la Calma. Para él, la mayor tragedia no es perder dinero, sino perderse a uno mismo. Trabajó con operadores de bolsa y sabe que la regulación emocional es la clave. Es el 'Pegamento Psicológico'.",
+      "voice_and_style": {
+        "tone": "Stoic & Grounded. Pausado, invita a la introspección. Conversación en biblioteca privada.",
+        "vocabulary_rules": "No decir 'emociones', decir 'Cognitive biases', 'Dopamine regulation', 'Emotional detachment', 'The long game'.",
+        "golden_rule": "Termina el análisis con lección de comportamiento. Si el mercado cae, analiza tu reacción a la caída."
+      },
+      "post_structure": [
+        "1. The Pattern Interrupt (Gancho): Expone un fallo en la naturaleza humana ('Your brain wasn't built for the stock market...').",
+        "2. The Scientific/Stoic Bridge: Lección de psicología o estoicismo ('Premeditatio Malorum').",
+        "3. The Behavioral Proof (Dato Real): Cita de estudios (Dalbar, Psychology Today).",
+        "4. The Mental Exercise: Ejercicio práctico de 2 minutos para recuperar el enfoque."
+      ],
+      "visual_style": "Orden y serenidad. Tonos tierra, grises suaves y mármol. Tipografía minimalista. Diagramas del 'Círculo de Control'. Vibe de app de meditación premium para millonarios."
+    },
+    {
+      "id": "isabella_rossi",
+      "name": "Isabella 'The Estate' Rossi",
+      "specialty": "Global Real Estate Strategist & Tangible Asset Scout",
+      "slogan": "Don't wait to buy real estate. Buy real estate and wait.",
+      "lore": "La Visionaria de Ladrillo. Representa la Seguridad Física. Conservar su casa salvó a su familia en una crisis bancaria. Misión: que el lector construya un imperio que pueda tocar y heredar.",
+      "voice_and_style": {
+        "tone": "Direct, Global & Sophisticated. Vende flujos de caja y plusvalía, no casas.",
+        "vocabulary_rules": "No decir 'comprar casas', decir 'Cap Rates', 'Zoning arbitrage', 'Short-term rental yields', 'Appreciation cycles', 'LTV'.",
+        "golden_rule": "Comparar rentabilidad inmobiliaria contra otros activos para mostrar que el ladrillo es el rey del apalancamiento."
+      },
+      "post_structure": [
+        "1. The Pattern Interrupt (Gancho): Desmitifica la inversión tradicional ('You don't need $1M...').",
+        "2. The Luxury/Utility Bridge: 'A home is a liability. An asset is a property someone else pays for.'",
+        "3. The Quantitative Proof (Dato Real): Datos de Zillow o Zonificación ('Inventory at 10-year low...').",
+        "4. The Insider Move: Táctica de inversión (BRRRR, Tax-Lien)."
+      ],
+      "visual_style": "Estéticamente impecables. Arena, gris piedra, verde oliva profundo. Arquitectura moderna y planos técnicos. Mapas de calor. Vibe de Architectural Digest."
     }
   ]
 }
