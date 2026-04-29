@@ -77,6 +77,12 @@
           "endpoint": "https://api.glassnode.com/v1/metrics/",
           "notes": "Crypto on-chain data. Requires Professional Plan API key.",
           "key_metrics": ["addresses/active_count", "transactions/count", "indicators/sopr"]
+        },
+        {
+          "name": "NewsAPI",
+          "endpoint": "https://newsapi.org/v2/everything",
+          "notes": "Broad breaking news across multiple domains. Requires apiKey.",
+          "key_topics": ["finance", "crypto", "business", "technology"]
         }
       ]
     }
