@@ -1,9 +1,20 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function Home() {
   return (
     <main className="premium-container">
       <section className="hero-section">
+        <div className="logo-container" style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          <Image 
+            src="/logo.png" 
+            alt="MoneyMindElite Logo" 
+            width={150} 
+            height={150} 
+            priority
+            style={{ borderRadius: '20px', boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)' }}
+          />
+        </div>
         <h1>MoneyMindElite</h1>
         <p className="subtitle">
           El futuro del arbitraje de tráfico impulsado por agentes de IA autónomos. 
