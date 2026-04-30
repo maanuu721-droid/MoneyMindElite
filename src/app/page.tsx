@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 
 interface Article {
   title: string;
@@ -7,111 +8,191 @@ interface Article {
   date: string;
   filename: string;
   imageUrl: string;
+  seo_description?: string;
 }
 
 export default function Home() {
   const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/articles.json')
       .then(res => res.json())
-      .then(data => setArticles(Array.isArray(data) ? data : []))
-      .catch(err => console.error('Error loading articles:', err));
+      .then(data => {
+        setArticles(Array.isArray(data) ? data : []);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, []);
 
+  // filename stored as "articles/20260430_slug.html" → URL is "/articles/20260430_slug.html"
+  const getArticleUrl = (filename: string) => {
+    if (filename.startsWith('/')) return filename;
+    if (filename.startsWith('articles/')) return `/${filename}`;
+    return `/articles/${filename}`;
+  };
+
+  const nicheColor: Record<string, string> = {
+    'Small Business': '#f59e0b',
+    'Real Estate': '#10b981',
+    'Wealth Arbitrage': '#6366f1',
+  };
+
   return (
-    <main className="premium-container">
-      <section className="hero-section">
-        <div className="logo-container" style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <Image 
-            src="/logo.png" 
-            alt="MoneyMindElite Logo" 
-            width={150} 
-            height={150} 
-            priority
-            style={{ borderRadius: '20px', boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)' }}
-          />
-        </div>
-        <h1>MoneyMindElite</h1>
-        <p className="subtitle">
-          The future of traffic arbitrage powered by autonomous AI agents. 
-          Dynamic content generation and real-time conversion optimization for the US, CA, and UK markets.
+    <main style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #0a0a0a 0%, #0f0f1a 100%)',
+      color: '#e8e8e8',
+      fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Georgia, sans-serif",
+    }}>
+      {/* Top Bar */}
+      <div style={{
+        background: 'linear-gradient(135deg, #f59e0b, #ef4444)',
+        padding: '14px 20px',
+        textAlign: 'center',
+      }}>
+        <span style={{ color: '#000', fontWeight: 900, fontSize: '1.1rem', letterSpacing: '1px' }}>
+          💰 MoneyMindElite — Premium Financial Intelligence
+        </span>
+      </div>
+
+      {/* Hero */}
+      <section style={{ textAlign: 'center', padding: '60px 24px 40px' }}>
+        <h1 style={{
+          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+          fontWeight: 900,
+          background: 'linear-gradient(135deg, #f59e0b, #ef4444)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          marginBottom: '16px',
+        }}>
+          MoneyMindElite
+        </h1>
+        <p style={{ color: '#64748b', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 40px' }}>
+          AI-powered financial intelligence for US, Canada &amp; UK markets.
+          Micro-SaaS · Real Estate · Wealth Arbitrage.
         </p>
-        
-        <div className="btn-group">
-          <a href="#explore" className="btn-primary">Explore Insights</a>
-        </div>
+      </section>
 
-        <div className="articles-section" id="explore" style={{ marginTop: '4rem' }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Latest Market Insights</h2>
-          <div className="content-grid">
-            {articles.length === 0 ? (
-              <div className="glass-card" style={{ gridColumn: '1 / -1', textAlign: 'center' }}>
-                <p>Curating the latest opportunities... Check back shortly.</p>
-              </div>
-            ) : (
-              articles.map((article, idx) => (
-                <div key={idx} className="glass-card article-card">
-                  <div className="badge">{article.niche}</div>
-                  <img src={article.imageUrl} alt={article.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
-                  <h3>{article.title}</h3>
-                  <p style={{ fontSize: '0.9rem', color: '#aaa' }}>{article.date}</p>
-                  <a href={article.filename.replace('public/', '/')} className="read-more">Read Analysis →</a>
+      {/* Articles Grid */}
+      <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px 80px' }}>
+        <h2 style={{ textAlign: 'center', fontSize: '1.6rem', color: '#fff', marginBottom: '40px' }}>
+          Latest Market Insights
+        </h2>
+
+        {loading && (
+          <p style={{ textAlign: 'center', color: '#64748b' }}>Loading articles...</p>
+        )}
+
+        {!loading && articles.length === 0 && (
+          <div style={{
+            background: '#111',
+            border: '1px solid #222',
+            borderRadius: '12px',
+            padding: '40px',
+            textAlign: 'center',
+            color: '#64748b',
+          }}>
+            <p>Curating the latest opportunities... Check back shortly.</p>
+          </div>
+        )}
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+          gap: '24px',
+        }}>
+          {articles.map((article, idx) => {
+            const color = nicheColor[article.niche] || '#f59e0b';
+            const url = getArticleUrl(article.filename);
+            return (
+              <a
+                key={idx}
+                href={url}
+                style={{ textDecoration: 'none' }}
+              >
+                <div style={{
+                  background: '#111',
+                  border: '1px solid #1e293b',
+                  borderRadius: '16px',
+                  padding: '28px',
+                  transition: 'transform 0.2s, border-color 0.2s',
+                  cursor: 'pointer',
+                  height: '100%',
+                }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+                    (e.currentTarget as HTMLElement).style.borderColor = color;
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+                    (e.currentTarget as HTMLElement).style.borderColor = '#1e293b';
+                  }}
+                >
+                  {/* Niche tag */}
+                  <span style={{
+                    display: 'inline-block',
+                    background: `${color}22`,
+                    color: color,
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    letterSpacing: '2px',
+                    textTransform: 'uppercase',
+                    padding: '4px 14px',
+                    borderRadius: '20px',
+                    border: `1px solid ${color}44`,
+                    marginBottom: '16px',
+                  }}>
+                    {article.niche}
+                  </span>
+
+                  <h3 style={{
+                    color: '#fff',
+                    fontSize: '1.1rem',
+                    lineHeight: 1.4,
+                    marginBottom: '10px',
+                  }}>
+                    {article.title}
+                  </h3>
+
+                  {article.seo_description && (
+                    <p style={{ color: '#64748b', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '16px' }}>
+                      {article.seo_description}
+                    </p>
+                  )}
+
+                  <p style={{ color: '#475569', fontSize: '0.75rem', marginBottom: '20px' }}>
+                    {article.date}
+                  </p>
+
+                  <span style={{
+                    display: 'inline-block',
+                    background: `linear-gradient(135deg, ${color}, #ef4444)`,
+                    color: '#000',
+                    fontWeight: 700,
+                    fontSize: '0.85rem',
+                    padding: '10px 20px',
+                    borderRadius: '8px',
+                  }}>
+                    Read Analysis →
+                  </span>
                 </div>
-              ))
-            )}
-          </div>
-        </div>
-
-        <div className="features-grid" style={{ marginTop: '4rem' }}>
-          <div className="glass-card">
-            <h3>Predictive Analysis</h3>
-            <p>Our agents analyze global trends to anticipate high-yield niches before the competition.</p>
-          </div>
-          <div className="glass-card">
-            <h3>Autonomous Content</h3>
-            <p>SEO-optimized articles, creatives, and copy generated without human intervention.</p>
-          </div>
-          <div className="glass-card">
-            <h3>Smart Distribution</h3>
-            <p>Multi-level orchestration across social platforms and search engines to maximize ROI.</p>
-          </div>
+              </a>
+            );
+          })}
         </div>
       </section>
 
-      <footer>
-        <p>&copy; {new Date().getFullYear()} MoneyMindElite. Powered by Advanced AI Agents.</p>
+      {/* Footer */}
+      <footer style={{
+        borderTop: '1px solid #1a1a1a',
+        padding: '24px',
+        textAlign: 'center',
+        color: '#334155',
+        fontSize: '0.8rem',
+      }}>
+        <p>© {new Date().getFullYear()} MoneyMindElite. For informational purposes only. Not financial advice.</p>
       </footer>
-
-      <style jsx global>{`
-        .badge {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 4px 12px;
-          border-radius: 20px;
-          font-size: 0.7rem;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          display: inline-block;
-          margin-bottom: 0.5rem;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .article-card {
-          display: flex;
-          flex-direction: column;
-          transition: transform 0.3s ease;
-        }
-        .article-card:hover {
-          transform: translateY(-5px);
-        }
-        .read-more {
-          margin-top: auto;
-          color: #fff;
-          text-decoration: none;
-          font-weight: bold;
-          font-size: 0.9rem;
-          padding-top: 1rem;
-        }
-      `}</style>
     </main>
   );
 }
