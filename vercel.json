@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/articles/:path*",
-      "destination": "/articles/:path*"
-    }
-  ]
-}
