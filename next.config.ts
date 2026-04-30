@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export'
+  // Configuración vacía - dejar que Vercel maneje todo
 };
 
 export default nextConfig;
