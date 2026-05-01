@@ -115,6 +115,47 @@
     }
     .nav-link .icon { font-size: 1rem; }
 
+    /* ── DROPDOWN ── */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--bg2);
+      min-width: 200px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      z-index: 1001;
+      top: 100%;
+      left: 0;
+      padding: 8px 0;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+      animation: fadeIn 0.2s ease-out;
+    }
+    .dropdown-content a {
+      color: var(--muted);
+      padding: 10px 20px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .dropdown-content a:hover {
+      background: rgba(245,158,11,0.05);
+      color: var(--gold);
+      padding-left: 24px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     /* ── HERO ── */
     .hero {
       background: linear-gradient(135deg, #060606 0%, #0a1128 50%, #060606 100%);
@@ -414,15 +455,23 @@
   <div class="nav-wrapper">
     <nav>
       <a href="/" class="nav-link active"><span class="icon">🏠</span> Home</a>
-      <a href="/?cat=real-estate" class="nav-link"><span class="icon">🏢</span> Real Estate</a>
-      <a href="/?cat=crypto" class="nav-link"><span class="icon">💎</span> Criptomonedas</a>
-      <a href="/?cat=forex" class="nav-link"><span class="icon">📈</span> Forex</a>
-      <a href="/?cat=investing" class="nav-link"><span class="icon">📊</span> Inversión</a>
-      <a href="/?cat=stocks" class="nav-link"><span class="icon">📉</span> Stock Market</a>
-      <a href="/?cat=passive-income" class="nav-link"><span class="icon">💸</span> Passive Income</a>
-      <a href="/?cat=side-hustle" class="nav-link"><span class="icon">🚀</span> Side Hustle</a>
-      <a href="/?cat=personal-finance" class="nav-link"><span class="icon">💳</span> Personal Finance</a>
-      <a href="/?cat=ai-automation" class="nav-link"><span class="icon">🤖</span> AI & Automation</a>
+      
+      <div class="dropdown">
+        <a href="#" class="nav-link"><span class="icon">📁</span> Categories <small>▼</small></a>
+        <div class="dropdown-content">
+          <a href="/?cat=real-estate">🏢 Real Estate</a>
+          <a href="/?cat=crypto">💎 Criptomonedas</a>
+          <a href="/?cat=forex">📈 Forex</a>
+          <a href="/?cat=investing">📊 Inversión</a>
+          <a href="/?cat=stocks">📉 Stock Market</a>
+          <a href="/?cat=passive-income">💸 Passive Income</a>
+          <a href="/?cat=side-hustle">🚀 Side Hustle</a>
+          <a href="/?cat=ai-automation">🤖 AI & Automation</a>
+          <a href="/?cat=personal-finance">🧠 Wealth Mindset</a>
+        </div>
+      </div>
+
+      <a href="/#sub-email" class="nav-link"><span class="icon">📩</span> Newsletter</a>
     </nav>
   </div>
 
