@@ -1,58 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoneyMindElite - Premium Financial Intelligence</title>
-    <style>
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #0a0a0a;
-            color: #e8e8e8;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            background: linear-gradient(135deg, #f59e0b, #ef4444);
-            padding: 20px;
-            text-align: center;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        h1 { color: #fff; margin: 0; }
-        .article {
-            background: #111;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-        }
-        .article h2 { color: #f59e0b; }
-        .article a {
-            color: #3b82f6;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoneyMindElite — Premium Financial Intelligence</title>
+  <meta name="description" content="Expert analysis on Real Estate, Crypto, Forex, Investing, Passive Income, and Side Hustles. Build wealth with data-driven insights.">
+  <meta property="og:title" content="MoneyMindElite — Premium Financial Intelligence">
+  <meta property="og:description" content="Expert analysis on Real Estate, Crypto, Forex, and Investing. Build wealth with data-driven insights.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:   #f59e0b;
+      --accent: #1d4ed8; /* Sapphire Blue */
+      --bg:     #060606;
+      --bg2:    #0f0f0f;
+      --bg3:    #1a1a1a;
+      --text:   #e8e8e8;
+      --muted:  #64748b;
+      --border: #1e293b;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── TOP BRAND BAR ── */
+    .brand-bar {
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(245,158,11,0.25);
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-img {
+      height: 32px;
+      width: auto;
+      filter: brightness(0); /* Make it black to contrast against the gold/blue bar */
+    }
+    .brand-text {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #000;
+      letter-spacing: -0.5px;
+    }
+    .brand-tagline {
+      color: rgba(0,0,0,0.65);
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: none;
+    }
+    @media(min-width:600px){ .brand-tagline { display: block; } }
+
+    /* ── NAVIGATION MENU ── */
+    .nav-wrapper {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 52px;
+      z-index: 999;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-wrapper::-webkit-scrollbar { display: none; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 16px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color .2s, border-color .2s;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .nav-link:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+    .nav-link.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+    .nav-link .icon { font-size: 1rem; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #060606 0%, #0a1128 50%, #060606 100%);
+      padding: 60px 24px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--gold), var(--red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat strong { display: block; font-size: 1.5rem; font-weight: 900; color: var(--gold); }
+    .stat span { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── AD BANNER ── */
+    .ad-wrapper { text-align: center; margin: 28px auto; overflow: hidden; }
+    .ad-top { max-width: 860px; padding: 0 20px; min-height: 90px; }
+    .ad-sticky { position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; text-align: center; background: rgba(10,10,10,0.95); border-top: 1px solid #222; padding: 6px 0; min-height: 60px; }
+
+    /* ── MAIN LAYOUT ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-title h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .section-title .line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-title .badge {
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ── CATEGORY CHIPS ── */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .cat-chip {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 16px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text);
+      transition: all .25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .cat-chip:hover {
+      border-color: var(--gold);
+      background: #1a1200;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(245,158,11,0.12);
+    }
+    .cat-chip .cat-icon { font-size: 1.8rem; }
+    .cat-chip .cat-name { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+    .cat-chip:hover .cat-name { color: var(--gold); }
+
+    /* ── ARTICLE CARDS ── */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .article-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all .25s ease;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      background: var(--bg3);
+    }
+    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .card-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: #000;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+    .card-title { font-size: 1rem; font-weight: 700; color: #fff; line-height: 1.35; }
+    .card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; flex: 1; }
+    .card-meta { font-size: 0.72rem; color: #555; margin-top: 8px; }
+    .card-read {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* ── NEWSLETTER SECTION ── */
+    .newsletter-section {
+      background: linear-gradient(135deg, #111, #000);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 60px 40px;
+      margin: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(245,158,11,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .newsletter-section h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+    .newsletter-section p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .subscribe-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .input-group {
+      display: flex;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 6px;
+      transition: all 0.3s ease;
+    }
+    .input-group:focus-within {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(245,158,11,0.1);
+    }
+    .input-group input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      padding: 12px 16px;
+      font-size: 1rem;
+      outline: none;
+    }
+    .btn-subscribe {
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 0 24px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .btn-subscribe:hover { transform: scale(1.02); }
+    .btn-subscribe:active { transform: scale(0.98); }
+
+    .interest-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .interest-tag {
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .interest-tag.active {
+      background: rgba(245,158,11,0.1);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .form-status {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      height: 20px;
+    }
+    .status-success { color: #10b981; }
+    .status-error { color: #ef4444; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 32px 20px 80px;
+      color: #444;
+      font-size: 0.78rem;
+    }
+    footer a { color: #666; text-decoration: none; }
+    footer .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; flex-wrap: wrap; }
+
+    @media(max-width: 600px) {
+      .articles-grid { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <h1>💰 MoneyMindElite</h1>
-        <p>Premium Financial Intelligence</p>
+
+  <!-- BRAND BAR -->
+  <div class="brand-bar">
+    <a href="/" class="brand-logo">
+      <img src="logo21.png" alt="MoneyMindElite" class="logo-img">
+      <span class="brand-text">MoneyMindElite</span>
+    </a>
+    <span class="brand-tagline">Premium Financial Intelligence</span>
+  </div>
+
+  <!-- NAVIGATION MENU -->
+  <div class="nav-wrapper">
+    <nav>
+      <a href="/" class="nav-link active"><span class="icon">🏠</span> Home</a>
+      <a href="/?cat=real-estate" class="nav-link"><span class="icon">🏢</span> Real Estate</a>
+      <a href="/?cat=crypto" class="nav-link"><span class="icon">💎</span> Criptomonedas</a>
+      <a href="/?cat=forex" class="nav-link"><span class="icon">📈</span> Forex</a>
+      <a href="/?cat=investing" class="nav-link"><span class="icon">📊</span> Inversión</a>
+      <a href="/?cat=stocks" class="nav-link"><span class="icon">📉</span> Stock Market</a>
+      <a href="/?cat=passive-income" class="nav-link"><span class="icon">💸</span> Passive Income</a>
+      <a href="/?cat=side-hustle" class="nav-link"><span class="icon">🚀</span> Side Hustle</a>
+      <a href="/?cat=personal-finance" class="nav-link"><span class="icon">💳</span> Personal Finance</a>
+      <a href="/?cat=ai-automation" class="nav-link"><span class="icon">🤖</span> AI & Automation</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Build Wealth With<br><span>Data-Driven Insights</span></h1>
+    <p>Expert analysis on Real Estate, Crypto, Forex, and the strategies the top 1% use to grow money.</p>
+    <div class="hero-stats">
+      <div class="stat"><strong>9</strong><span>Niches Covered</span></div>
+      <div class="stat"><strong>Daily</strong><span>New Articles</span></div>
+      <div class="stat"><strong>AI</strong><span>Powered Analysis</span></div>
     </div>
-    <div class="container">
-        <div class="article">
-            <h2>Latest Articles</h2>
-            <p><a href="/articles/20260430_micro-saas-blueprint-5k-month.html">The Micro-SaaS Blueprint: Build a $5K/Month Business</a></p>
-            <p><a href="/articles/bull-run-2026-report.html">Bull Run 2026 Report</a></p>
-        </div>
-        
-        <div class="article">
-            <h2>Direct Links (for testing)</h2>
-            <p><a href="articles/20260430_micro-saas-blueprint-5k-month.html">Article 1 (relative path)</a></p>
-            <p><a href="articles/bull-run-2026-report.html">Article 2 (relative path)</a></p>
-        </div>
+  </div>
+
+  <!-- AD #1: TOP LEADERBOARD -->
+  <div class="ad-wrapper ad-top">
+    <script async="async" data-cfasync="false" src="//pl26939766.profitablegatecpm.com/dbf100dc812877fd93eb992c7129ab5c/invoke.js"></script>
+    <div id="container-dbf100dc812877fd93eb992c7129ab5c-home-top"></div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+
+    <!-- CATEGORY CHIPS -->
+    <div class="section-title">
+      <h2>Browse by Category</h2>
+      <div class="line"></div>
+      <span class="badge">9 Niches</span>
     </div>
+    <div class="category-grid">
+      <a href="/?cat=real-estate" class="cat-chip">
+        <span class="cat-icon">🏢</span>
+        <span class="cat-name">Real Estate</span>
+      </a>
+      <a href="/?cat=crypto" class="cat-chip">
+        <span class="cat-icon">💎</span>
+        <span class="cat-name">Criptomonedas</span>
+      </a>
+      <a href="/?cat=forex" class="cat-chip">
+        <span class="cat-icon">📈</span>
+        <span class="cat-name">Forex</span>
+      </a>
+      <a href="/?cat=investing" class="cat-chip">
+        <span class="cat-icon">📊</span>
+        <span class="cat-name">Inversión</span>
+      </a>
+      <a href="/?cat=stocks" class="cat-chip">
+        <span class="cat-icon">📉</span>
+        <span class="cat-name">Stock Market</span>
+      </a>
+      <a href="/?cat=passive-income" class="cat-chip">
+        <span class="cat-icon">💸</span>
+        <span class="cat-name">Passive Income</span>
+      </a>
+      <a href="/?cat=side-hustle" class="cat-chip">
+        <span class="cat-icon">🚀</span>
+        <span class="cat-name">Side Hustle</span>
+      </a>
+      <a href="/?cat=personal-finance" class="cat-chip">
+        <span class="cat-icon">💳</span>
+        <span class="cat-name">Personal Finance</span>
+      </a>
+      <a href="/?cat=ai-automation" class="cat-chip">
+        <span class="cat-icon">🤖</span>
+        <span class="cat-name">AI & Automation</span>
+      </a>
+    </div>
+
+    <!-- LATEST ARTICLES -->
+    <div class="section-title">
+      <h2>Latest Articles</h2>
+      <div class="line"></div>
+      <span class="badge">New</span>
+    </div>
+    <div class="articles-grid" id="articles-grid">
+
+      <!-- Article 1 — hardcoded while articles.json loads -->
+      <a href="/articles/20260430_micro-saas-blueprint-5k-month.html" class="article-card">
+        <div class="card-body">
+          <span class="card-tag">Small Business</span>
+          <div class="card-title">The Micro-SaaS Blueprint: Build a $5K/Month Business With No-Code Tools</div>
+          <div class="card-desc">Solo founders are quietly building $5K–$20K/month software businesses with zero employees and zero investors. Here's the exact blueprint.</div>
+          <div class="card-meta">April 30, 2026 · MoneyMindElite</div>
+          <span class="card-read">Read Article →</span>
+        </div>
+      </a>
+
+      <!-- Article 2 — hardcoded while articles.json loads -->
+      <a href="/articles/bull-run-2026-report.html" class="article-card">
+        <div class="card-body">
+          <span class="card-tag">Criptomonedas</span>
+          <div class="card-title">Bull Run 2026 Report: What Every Crypto Investor Needs to Know Right Now</div>
+          <div class="card-desc">Market signals are aligning in ways that haven't been seen since 2020. Here's what our AI analysis is pointing to for Q2–Q3 2026.</div>
+          <div class="card-meta">April 30, 2026 · MoneyMindElite</div>
+          <span class="card-read">Read Article →</span>
+        </div>
+      </a>
+
+    </div><!-- /#articles-grid -->
+
+  </div><!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/?cat=real-estate">Real Estate</a>
+      <a href="/?cat=crypto">Crypto</a>
+      <a href="/?cat=forex">Forex</a>
+      <a href="/?cat=investing">Inversión</a>
+      <a href="/?cat=side-hustle">Side Hustle</a>
+    </div>
+    <p>© <span id="yr"></span> MoneyMindElite. For informational purposes only. Not financial advice.</p>
+  </footer>
+
+  <!-- AD #4: STICKY ANCHOR -->
+  <div class="ad-sticky">
+    <script async="async" data-cfasync="false" src="//pl26939766.profitablegatecpm.com/dbf100dc812877fd93eb992c7129ab5c/invoke.js"></script>
+    <div id="container-dbf100dc812877fd93eb992c7129ab5c-home-sticky"></div>
+  </div>
+
+  <script>
+    // ── Year ──
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // ── Active nav link based on ?cat= param ──
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('cat');
+    if (cat) {
+      document.querySelectorAll('.nav-link').forEach(el => {
+        el.classList.remove('active');
+        if (el.href.includes('cat=' + cat)) el.classList.add('active');
+      });
+    }
+
+    // ── Load articles from articles.json ──
+    fetch('/public/articles.json')
+      .then(r => r.json())
+      .then(articles => {
+        if (!articles || articles.length === 0) return;
+        const grid = document.getElementById('articles-grid');
+        grid.innerHTML = ''; // clear hardcoded cards
+        articles.forEach(a => {
+          const card = document.createElement('a');
+          card.href = '/' + a.filename;
+          card.className = 'article-card';
+          card.innerHTML = `
+            ${a.imageUrl ? `<img src="${a.imageUrl}" alt="${a.title}" class="card-img" loading="lazy">` : ''}
+            <div class="card-body">
+              <span class="card-tag">${a.niche || 'Finance'}</span>
+              <div class="card-title">${a.title}</div>
+              <div class="card-desc">${a.seo_description || ''}</div>
+              <div class="card-meta">${a.date} &middot; MoneyMindElite</div>
+              <span class="card-read">Read Article &rarr;</span>
+            </div>`;
+          grid.appendChild(card);
+        });
+      })
+      .catch(() => {}); // silently keep hardcoded fallback cards on error
+  </script>
+
 </body>
 </html>
