@@ -1,6 +1,6 @@
 self.options = {
-    "domain": "5gvci.com",
-    "zoneId": 10994491
+    "domain": "moneymindelite.com",
+    "zoneId": 10994514
 }
 self.lary = ""
-importScripts('https://5gvci.com/act/files/service-worker.min.js?r=sw')
+importScripts('https://quge5.com/act/files/service-worker.min.js?r=sw')
